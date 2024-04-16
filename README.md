@@ -1,6 +1,6 @@
 # 1brc-csharp
 
-### Credit to Creator and .NET C
+### Credit to Creator and Community
 The 1 Billion Row Challenge was originally a competition set up for Java programmers. It has blown up and has taken many different communities by storm. See the original blog here explaining all the details for the challenge: https://www.morling.dev/blog/one-billion-row-challenge/. The results of the original challenge can be found here: https://www.morling.dev/blog/1brc-results-are-in/.
 
 Here is the original 1 Billion Row Challenge (1brc) repo: https://github.com/gunnarmorling/1brc
