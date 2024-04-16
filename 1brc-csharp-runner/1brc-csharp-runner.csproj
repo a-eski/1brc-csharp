@@ -13,7 +13,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="data\" />
+    <ContentWithTargetPath Include="data\weather_stations.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <TargetPath>data\weather_stations.csv</TargetPath>
+    </ContentWithTargetPath>
+    <None Include="data\weather_stations.csv" />
   </ItemGroup>
-
+  
 </Project>
