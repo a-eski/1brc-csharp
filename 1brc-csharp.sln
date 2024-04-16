@@ -12,7 +12,11 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution", "Solution", "{9BCECF7B-86F3-491B-B9C3-EF4175ACA16D}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		LICENSE = LICENSE
+		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1brc-csharp-benchmarks", "1brc-csharp-benchmarks\1brc-csharp-benchmarks.csproj", "{B8A112CA-F43E-4782-B7B2-60D6E548FC5C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,5 +39,9 @@ Global
 		{0D722245-5F27-410E-A5F3-F327B1F9B5EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D722245-5F27-410E-A5F3-F327B1F9B5EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D722245-5F27-410E-A5F3-F327B1F9B5EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8A112CA-F43E-4782-B7B2-60D6E548FC5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8A112CA-F43E-4782-B7B2-60D6E548FC5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8A112CA-F43E-4782-B7B2-60D6E548FC5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8A112CA-F43E-4782-B7B2-60D6E548FC5C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

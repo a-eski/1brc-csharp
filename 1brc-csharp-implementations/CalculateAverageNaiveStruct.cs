@@ -1,19 +1,20 @@
 ﻿using System.Text;
 using _1brc_csharp_implementations.Common;
+using _1brc_csharp_implementations.Models;
 
 namespace _1brc_csharp_implementations;
 
 /// <summary>
 /// Initial implementation. Most experienced developers probably end up somewhere like here for first iteration (i.e. just try to do it fast synchronously).
-/// CalculateAveratgeNaiveStruct_3 is a very similar approach.
+/// CalculateAverageNaive is a very similar approach.
 /// </summary>
-public static class CalculateAverageNaive
+public static class CalculateAverageNaiveStruct
 {
     public static void Run()
     {
         var filePath = FilePathGetter.GetFilePath();
-
-        var dictionary = new Dictionary<string, double[]>();// array is length 4. count, min, max, total. mean calculated at end, to avoid unnecessary division operations.
+        
+        var dictionary = new Dictionary<string, NaiveStruct>();
         foreach (var line in File.ReadLines(filePath))
         {
             if (line.StartsWith('#')) continue;
@@ -25,23 +26,23 @@ public static class CalculateAverageNaive
         var index = 0;
         foreach (var weatherStation in dictionary.OrderBy(x => x.Key))
         {
-            sb.Append($"{weatherStation.Key}={weatherStation.Value[1]},{weatherStation.Value[2]},{weatherStation.Value[3] / weatherStation.Value[0]}");
-            if (index++ < dictionary.Count - 1) sb.Append(',');
+            var separator = index++ < dictionary.Count - 1 ? "," : "";
+            sb.Append($"{weatherStation.Key}={weatherStation.Value.Min},{weatherStation.Value.Max},{weatherStation.Value.Total / weatherStation.Value.Count}{separator}");
         }
         sb.Append('}');
 
         Console.WriteLine(sb.ToString());
     }
 
-    private static void ProcessLine(string line, Dictionary<string, double[]> dictionary)
+    private static void ProcessLine(string line, Dictionary<string, NaiveStruct> dictionary)
     {
         var data = line.Split(';');
         var newValue = double.Parse(data[1]);
 
         dictionary.TryGetValue(data[0], out var values);
-        if (values == null || values.Length == 0)
+        if (values.Count == 0)
         {
-            var initialValues = new[] { 1.0, newValue, newValue, newValue };
+            var initialValues = new NaiveStruct { Count = 1.0, Min = newValue, Max = newValue, Total = newValue };
             dictionary.Add(data[0], initialValues);
             return;
         }
@@ -50,12 +51,12 @@ public static class CalculateAverageNaive
         dictionary[data[0]] = newValues;
     }
 
-    private static double[] CalculateValues(double[] values, double newValue)
+    private static NaiveStruct CalculateValues(NaiveStruct values, double newValue)
     {
-        values[0]++;//increment count
-        if (newValue < values[1]) values[1] = newValue;//track min
-        if (newValue > values[2]) values[2] = newValue;//track max
-        values[3] += newValue;//track total
+        values.Count++;//increment count
+        if (newValue < values.Min) values.Min = newValue;//track min
+        if (newValue > values.Max) values.Max = newValue;//track max
+        values.Total += newValue;//track total
 
         return values;
     }
