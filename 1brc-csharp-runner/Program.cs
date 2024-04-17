@@ -16,8 +16,7 @@ stopwatch.Start();
 //CalculateAverageSpan2.Run();
 //await CalculateAverageAsync.Run();
 //CalculateAverageStreamReader.Run(); 
-CalculateAverageFasterConsole.Run(); 
-//CalculateAverageSplitOutput.Run(); 
+CalculateAverageFasterConsole.Run();
 
 stopwatch.Stop();
 Console.WriteLine($"Time elapsed: {stopwatch.ElapsedMilliseconds}ms");
