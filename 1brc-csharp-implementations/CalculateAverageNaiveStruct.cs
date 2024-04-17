@@ -17,8 +17,6 @@ public static class CalculateAverageNaiveStruct
         var dictionary = new Dictionary<string, NaiveStruct>();
         foreach (var line in File.ReadLines(filePath))
         {
-            if (line.StartsWith('#')) continue;
-
             ProcessLine(line, dictionary);
         }
 

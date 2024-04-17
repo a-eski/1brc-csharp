@@ -16,7 +16,6 @@ public static class CalculateAverageAsync
         var dictionary = new Dictionary<string, float[]>();// array is length 4. count, min, max, total. mean calculated at end, to avoid unnecessary division operations.
         await foreach (var line in File.ReadLinesAsync(filePath))
         {
-            if (line.AsSpan()[0] == '#') continue;
             var semicolonIndex = line.AsSpan().IndexOf(';');
             var weatherStationName = new string(line.AsSpan()[..semicolonIndex]);
             var newValue = float.Parse(line.AsSpan()[(semicolonIndex + 1)..]);

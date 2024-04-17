@@ -15,8 +15,7 @@ public static class CalculateAverageSpan2
         var dictionary = new Dictionary<string, float[]>();// array is length 4. count, min, max, total. mean calculated at end, to avoid unnecessary division operations.
         foreach (var line in File.ReadLines(filePath))
         {
-            var lineSpan = line.AsSpan();  
-            if (lineSpan[0] == '#') continue;
+            var lineSpan = line.AsSpan();
             var semicolonIndex = lineSpan.IndexOf(';');
             var weatherStationName = new string(lineSpan[..semicolonIndex]);
             var newValue = float.Parse(lineSpan[(semicolonIndex + 1)..]);

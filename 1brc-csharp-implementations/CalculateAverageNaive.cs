@@ -16,8 +16,6 @@ public static class CalculateAverageNaive
         var dictionary = new Dictionary<string, double[]>();// array is length 4. count, min, max, total. mean calculated at end, to avoid unnecessary division operations.
         foreach (var line in File.ReadLines(filePath))
         {
-            if (line.StartsWith('#')) continue;
-
             ProcessLine(line, dictionary);
         }
 

@@ -15,8 +15,7 @@ public static class CalculateAverageSplitOutput
         var dictionary = new Dictionary<string, float[]>();// array is length 4. count, min, max, total. mean calculated at end, to avoid unnecessary division operations.
         foreach (var line in File.ReadLines(filePath))
         {
-            var lineSpan = line.AsSpan();  
-            if (lineSpan[0] == '#') continue;
+            var lineSpan = line.AsSpan();
             var semicolonIndex = lineSpan.IndexOf(';');
             var weatherStationName = new string(lineSpan[..semicolonIndex]);
             var newValue = float.Parse(lineSpan[(semicolonIndex + 1)..]);
@@ -39,18 +38,18 @@ public static class CalculateAverageSplitOutput
         using var standardOutput = Console.OpenStandardOutput();
         foreach (var weatherStation in dictionary.OrderBy(x => x.Key))
         {
-            if (index % 1000 == 0)
-            {
-                standardOutput.Write((ReadOnlySpan<byte>)Encoding.UTF8.GetBytes(sb.ToString()));
-                sb.Clear();
-            }
-            
             sb.Append(weatherStation.Key).Append('=')
                 .Append(weatherStation.Value[1]).Append(',')
                 .Append(weatherStation.Value[2]).Append(',')
                 .Append(weatherStation.Value[3] / weatherStation.Value[0]);
             
             if (++index < dictionary.Count) sb.Append(',');
+            
+            if (index % 5000 == 0)
+            {
+                standardOutput.Write((ReadOnlySpan<byte>)Encoding.UTF8.GetBytes(sb.ToString()));
+                sb.Clear();
+            }
         }
         sb.Append('}');
         
