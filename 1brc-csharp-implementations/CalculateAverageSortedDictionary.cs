@@ -39,7 +39,6 @@ public static class CalculateAverageSortedDictionary
     private static void ProcessLine(string line, SortedDictionary<string, float[]> dictionary)
     {
         var lineSpan = line.AsSpan();
-        if (lineSpan[0] == '#') return;
         var semicolonIndex = lineSpan.IndexOf(';');
         var weatherStationName = new string(lineSpan[..semicolonIndex]);
         var newValue = float.Parse(lineSpan[(semicolonIndex + 1)..]);

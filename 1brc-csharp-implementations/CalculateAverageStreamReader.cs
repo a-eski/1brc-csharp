@@ -18,7 +18,6 @@ public static class CalculateAverageStreamReader
         {
             var line = sr.ReadLine();
             var lineSpan = line.AsSpan();
-            if (lineSpan[0] == '#') continue;
             var semicolonIndex = lineSpan.IndexOf(';');
             var weatherStationName = new string(lineSpan[..semicolonIndex]);
             var newValue = float.Parse(lineSpan[(semicolonIndex + 1)..]);

@@ -6,7 +6,6 @@ namespace _1brc_csharp_implementations;
 
 /// <summary>
 /// Iterating from CalculateAverageFasterConsole, continue trying to reduce allocations and duration without splitting work asynchronously or with multiple threads.
-/// Please note, 
 /// </summary>
 public static class CalculateAverageMemoryMappedFile
 {
@@ -16,14 +15,13 @@ public static class CalculateAverageMemoryMappedFile
 
         using var mmf = MemoryMappedFile.CreateFromFile(filePath, FileMode.Open);
         using var accessor = mmf.CreateViewAccessor();
-        
+        //in progress
         using var sr = File.OpenText(filePath);
         var dictionary = new Dictionary<string, float[]>();//array is length 4. count, min, max, total. mean calculated at end, to avoid unnecessary division operations.
         while (!sr.EndOfStream)
         {
             var line = sr.ReadLine();
             var lineSpan = line.AsSpan();
-            if (lineSpan[0] == '#') continue;
             var semicolonIndex = lineSpan.IndexOf(';');
             var weatherStationName = new string(lineSpan[..semicolonIndex]);
             var newValue = float.Parse(lineSpan[(semicolonIndex + 1)..]);

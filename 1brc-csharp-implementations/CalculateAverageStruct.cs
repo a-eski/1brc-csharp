@@ -38,7 +38,6 @@ public static class CalculateAverageStruct
     private static void ProcessLine(string line, Dictionary<string, WeatherData> dictionary)
     {
         var lineSpan = line.AsSpan();
-        if (lineSpan[0] == '#') return;
         var semicolonIndex = lineSpan.IndexOf(';');
         var weatherStationName = new string(lineSpan[..semicolonIndex]);
         var newValue = float.Parse(lineSpan[(semicolonIndex + 1)..]);

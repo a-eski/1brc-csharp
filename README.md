@@ -21,10 +21,18 @@ This project will document my journey working through the 1brc, with C# as the l
 I wanted this to be C# beginner-friendly, so I have left a series of implementations in the project. Each implementation built upon concepts from the previous, and the I used benchmarking and profiling to determine what kind of changes I wanted to make for the next implementation.
 
 ### Notes
-I have been working with 10,000 row file for implementations and iterative process. Current implementations are left as they are, so they can be benchmarked them with 1,000,000,000 row file later (at least some of them).
+I had been working with 10,000 row weather_data.csv file for implementations and iterative process. Current implementations are left as they are, so they can be benchmarked them with 1,000,000,000 row file later (at least some of them).
 
 Certain implementations should always be excluded from benchmarks. These implementations, like CalculateAverageNaiveClassConsoleWrite and CalculateAverageNaiveStructConcatenation, were written with the intent to make mistakes inexperienced programmers may make. You will see similar minor mistakes in CalculateAverageNaiveClass, CalculateAverageNaiveStruct, and CalculateAverageNaive. However, as mentioned, I wanted this project to be C# beginner-friendly. So, giving these poor performing examples to beginners and then providing ideas for improvement can provide beginners a great jumping off point for their own explorations.
 
 When originally developing implementations, I always excluded writing to the Console when benchmarking. This made it easier to compare implementations. When I did start benchmarking implementations against each other with Console.Write or Console.WriteLine, I quickly noticed that this was where the bulk or the program execution time was being spent. This is how further implementations like CalculateAverageFasterConsole came about. Since part of the challenge is sending the result to standard output, how you achieve that can also be a subject for optimizations.
 
 None of the implementations are yet compliant with the requirements. It mentions roundTowardsPositive behavior as well as only showing 1 significant digit. I will get around to this eventually. I am also still working on adding testing and I have multiple other ideas for this project!
+
+### Generating measurements.txt
+I didn't want to include measurements.txt with 10,000, 100,000, 1,000,000, and 1,000,000,000 rows in this repo. Hence, I have a modified version of the python script to generate data from the original challenge in python/create_measurements.py.
+
+To generate data, you will need python installed. The only arg you need to pass in is the number of rows you want in the output measurements.txt file. Please note, I only tested this script on Windows.
+```
+py ./create_measurements.py 10_000
+```

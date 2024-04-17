@@ -2,8 +2,10 @@
 
 public static class FilePathGetter
 {
-    private const string WeatherDataFile = "/data/weather_stations.csv";
+    private const string WeatherDataFile = "/data/measurements_10_000.txt";
     private const string NetVersion = "net8.0";
+    
+    //Naive
     public static string GetFilePath()
     {
         var currentDirectory = Environment.CurrentDirectory;
@@ -17,5 +19,6 @@ public static class FilePathGetter
         return $"{projectDirectory}{WeatherDataFile}";
     }
 
+    //Simplified
     public static string GetPath() => $"{Environment.CurrentDirectory}{WeatherDataFile}";
 }
