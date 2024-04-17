@@ -10,10 +10,10 @@ The 1 Billion Row Challenge was originally a competition set up for Java program
 If you plan on doing the challenge yourself, I would avoid looking at implementations for the language you are writing in. It allows you to explore and learn a lot more than you would going for a hyper-optimized implementation from the beginning.
 
 I have tried not to look at any .NET (C#/F#) implementations for the 1brc in depth, but here are some great repositories I plan on exploring in depth more when I am further along with this project.
-https://github.com/buybackoff/1brc
-https://github.com/nietras/1brc.cs
-https://github.com/xoofx/Fast1BRC
-https://github.com/praeclarum/1brc
+* https://github.com/buybackoff/1brc
+* https://github.com/nietras/1brc.cs
+* https://github.com/xoofx/Fast1BRC
+* https://github.com/praeclarum/1brc
 
 ### 1brc.dev
 If you are interested in doing the challenge in a language other than C#, check out this page with references to repos with implementations in tons of great languages like Go, Zig, and Rust: https://1brc.dev/.
