@@ -11,13 +11,11 @@ public static class CalculateAverageFasterConsole
     public static void Run()
     {
         var filePath = FilePathGetter.GetPath();
-
         using var sr = File.OpenText(filePath);
         var dictionary = new Dictionary<string, float[]>();//array is length 4. count, min, max, total. mean calculated at end, to avoid unnecessary division operations.
         while (!sr.EndOfStream)
         {
-            var line = sr.ReadLine();
-            var lineSpan = line.AsSpan();
+            var lineSpan = sr.ReadLine()!.AsSpan();
             var semicolonIndex = lineSpan.IndexOf(';');
             var weatherStationName = new string(lineSpan[..semicolonIndex]);
             var newValue = float.Parse(lineSpan[(semicolonIndex + 1)..]);
