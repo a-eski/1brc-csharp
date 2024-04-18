@@ -24,8 +24,8 @@ public static class CalculateAverageNaiveStruct
         var index = 0;
         foreach (var weatherStation in dictionary.OrderBy(x => x.Key))
         {
-            var separator = index++ < dictionary.Count - 1 ? "," : "";
-            sb.Append($"{weatherStation.Key}={weatherStation.Value.Min},{weatherStation.Value.Max},{weatherStation.Value.Total / weatherStation.Value.Count}{separator}");
+            var separator = index++ < dictionary.Count - 1 ? ", " : "";
+            sb.Append($"{weatherStation.Key}={weatherStation.Value.Min:##.#},{weatherStation.Value.Max:##.#},{(weatherStation.Value.Total / weatherStation.Value.Count):##.#}{separator}");
         }
         sb.Append('}');
 

@@ -24,11 +24,11 @@ public static class CalculateAverageStruct
         foreach (var weatherStation in dictionary.OrderBy(x => x.Key))
         {
             sb.Append(weatherStation.Key).Append('=')
-                .Append(weatherStation.Value.Min).Append(',')
-                .Append(weatherStation.Value.Max).Append(',')
-                .Append(weatherStation.Value.Total / weatherStation.Value.Count);
+                .Append(weatherStation.Value.Min.ToString("##.#")).Append(',')
+                .Append(weatherStation.Value.Max.ToString("##.#")).Append(',')
+                .Append((weatherStation.Value.Total / weatherStation.Value.Count).ToString("##.#"));
             
-            if (++index < dictionary.Count) sb.Append(',');
+            if (++index < dictionary.Count) sb.Append(", ");
         }
         sb.Append('}');
 

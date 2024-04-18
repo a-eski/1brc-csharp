@@ -23,11 +23,11 @@ public static class CalculateAverageStringBuilder
         foreach (var weatherStation in dictionary.OrderBy(x => x.Key))
         {
             sb.Append(weatherStation.Key).Append('=')
-                .Append(weatherStation.Value[1]).Append(',')
-                .Append(weatherStation.Value[2]).Append(',');
-            sb.Append(weatherStation.Value[3] / weatherStation.Value[0]);
+                .Append(weatherStation.Value[1].ToString("##.#")).Append(',')
+                .Append(weatherStation.Value[2].ToString("##.#")).Append(',')
+                .Append((weatherStation.Value[3] / weatherStation.Value[0]).ToString("##.#"));
             
-            if (++index < dictionary.Count) sb.Append(',');
+            if (++index < dictionary.Count) sb.Append(", ");
         }
         sb.Append('}');
 

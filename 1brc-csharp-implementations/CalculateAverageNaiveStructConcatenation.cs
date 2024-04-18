@@ -24,8 +24,8 @@ public static class CalculateAverageNaiveStructConcatenation
         var i = 0;
         foreach (var weatherStation in dictionary.OrderBy(x => x.Key))
         {
-            result += $"{weatherStation.Key}={weatherStation.Value.Min},{weatherStation.Value.Max},{weatherStation.Value.Total / weatherStation.Value.Count}";
-            if (i < dictionary.Count - 1) result += ",";
+            result += $"{weatherStation.Key}={weatherStation.Value.Min:##.#},{weatherStation.Value.Max:##.#},{(weatherStation.Value.Total / weatherStation.Value.Count):##.#}";
+            if (i < dictionary.Count - 1) result += ", ";
             i++;
         }
 

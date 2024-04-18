@@ -2,7 +2,7 @@
 
 public static class FilePathGetter
 {
-    private const string WeatherDataFile = "/data/measurements_10_000.txt";
+    private const string WeatherDataFile = "/data/measurements_1_000_000.txt";
     
     //Naive
     public static string GetFilePath()
