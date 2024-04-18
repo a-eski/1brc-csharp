@@ -4,12 +4,10 @@ using _1brc_csharp_implementations.Common;
 namespace _1brc_csharp_implementations;
 
 /// <summary>
-/// Iterating from CalculateAverageSynchronous, continue trying to reduce allocations and duration without splitting work asynchronously and without using multiple threads.
+/// Iterating from CalculateAverageSpan, continue trying to reduce allocations and duration without splitting work asynchronously and without using multiple threads.
 /// </summary>
 public static class CalculateAverageSortedDictionary
 {
-    private const string WeatherDataFile = "/data/weather_stations.csv";
-    
     public static void Run()
     {
         var filePath = FilePathGetter.GetFilePath();
@@ -25,11 +23,11 @@ public static class CalculateAverageSortedDictionary
         foreach (var weatherStation in dictionary.ToList())
         {
             sb.Append(weatherStation.Key).Append('=')
-                .Append(weatherStation.Value[1]).Append(',')
-                .Append(weatherStation.Value[2]).Append(',')
-                .Append(weatherStation.Value[3] / weatherStation.Value[0]);
+                .Append(weatherStation.Value[1].ToString("##.#")).Append(',')
+                .Append(weatherStation.Value[2].ToString("##.#")).Append(',')
+                .Append((weatherStation.Value[3] / weatherStation.Value[0]).ToString("##.#"));
             
-            if (++index < dictionary.Count) sb.Append(',');
+            if (++index < dictionary.Count) sb.Append(", ");
         }
         sb.Append('}');
 

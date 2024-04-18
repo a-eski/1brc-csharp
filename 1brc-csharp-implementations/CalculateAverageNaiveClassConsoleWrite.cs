@@ -22,8 +22,8 @@ public static class CalculateAverageNaiveClassConsoleWrite
         var i = 0;
         foreach (var weatherStation in dictionary.OrderBy(x => x.Key))
         {
-            Console.Write($"{weatherStation.Key}={weatherStation.Value.Min},{weatherStation.Value.Max},{weatherStation.Value.Mean}");
-            if (i < dictionary.Count - 1) Console.Write(",");
+            Console.Write($"{weatherStation.Key}={weatherStation.Value.Min:##.#},{weatherStation.Value.Max:##.#},{weatherStation.Value.Mean:##.#}");
+            if (i < dictionary.Count - 1) Console.Write(", ");
             i++;
         }
         Console.Write("}");

@@ -16,4 +16,12 @@
     <ItemGroup>
       <ProjectReference Include="..\1brc-csharp-implementations\1brc-csharp-implementations.csproj" />
     </ItemGroup>
+
+    <ItemGroup>
+        <ContentWithTargetPath Include="data\measurements_1_000_000.txt">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <TargetPath>data\measurements_1_000_000.txt</TargetPath>
+        </ContentWithTargetPath>
+        <None Include="data\measurements_1_000_000.txt" />
+    </ItemGroup>
 </Project>

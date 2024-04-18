@@ -43,11 +43,11 @@ public static class CalculateAverageMemoryMappedFile
         foreach (var weatherStation in dictionary.OrderBy(x => x.Key))
         {
             sb.Append(weatherStation.Key).Append('=')
-                .Append(weatherStation.Value[1]).Append(',')
-                .Append(weatherStation.Value[2]).Append(',')
-                .Append(weatherStation.Value[3] / weatherStation.Value[0]);
+                .Append(Math.Round(weatherStation.Value[1], 1, MidpointRounding.ToZero)).Append(',')
+                .Append(Math.Round(weatherStation.Value[2], 1, MidpointRounding.ToZero)).Append(',')
+                .Append(Math.Round(weatherStation.Value[3] / weatherStation.Value[0], 1, MidpointRounding.ToZero));
 
-            if (++index < dictionary.Count) sb.Append(',');
+            if (++index < dictionary.Count) sb.Append(", ");
         }
         sb.Append('}');
 

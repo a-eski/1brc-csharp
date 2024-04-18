@@ -23,8 +23,8 @@ public static class CalculateAverageNaive
         var index = 0;
         foreach (var weatherStation in dictionary.OrderBy(x => x.Key))
         {
-            sb.Append($"{weatherStation.Key}={weatherStation.Value[1]},{weatherStation.Value[2]},{weatherStation.Value[3] / weatherStation.Value[0]}");
-            if (index++ < dictionary.Count - 1) sb.Append(',');
+            sb.Append($"{weatherStation.Key}={weatherStation.Value[1]:##.#},{weatherStation.Value[2]:##.#},{(weatherStation.Value[3] / weatherStation.Value[0]):##.#}");
+            if (index++ < dictionary.Count - 1) sb.Append(", ");
         }
         sb.Append('}');
 
