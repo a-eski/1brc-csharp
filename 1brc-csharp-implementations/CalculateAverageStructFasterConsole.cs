@@ -11,7 +11,7 @@ public static class CalculateAverageStructFasterConsole
 {
     public static void Run()
     {
-        var filePath = FilePathGetter.GetFilePath();
+        var filePath = FilePathGetter.GetPath();
         
         var dictionary = new Dictionary<string, WeatherValues>();
         foreach (var line in File.ReadLines(filePath))
