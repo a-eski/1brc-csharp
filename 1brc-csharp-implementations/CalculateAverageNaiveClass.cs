@@ -50,10 +50,10 @@ public static class CalculateAverageNaiveClass
 
     private static NaiveClass CalculateValues(NaiveClass values, double newValue)
     {
-        values.Count++;//increment count
-        if (newValue < values.Min) values.Min = newValue;//track min
-        if (newValue > values.Max) values.Max = newValue;//track max
-        values.Total += newValue;//track total
+        values.Count++;
+        if (newValue < values.Min) values.Min = newValue;
+        if (newValue > values.Max) values.Max = newValue;
+        values.Total += newValue;
         values.Mean = values.Total / values.Count;//keep track of current mean as well
 
         return values;

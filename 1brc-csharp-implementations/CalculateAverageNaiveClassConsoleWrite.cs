@@ -12,7 +12,7 @@ public static class CalculateAverageNaiveClassConsoleWrite
     {
         var filePath = FilePathGetter.GetFilePath();
 
-        var dictionary = new Dictionary<string, NaiveClass>();// array is length 4. count, min, max, total. mean calculated at end, to avoid unnecessary division operations.
+        var dictionary = new Dictionary<string, NaiveClass>();
         foreach (var line in File.ReadLines(filePath))
         {
             ProcessLine(line, dictionary);
@@ -48,11 +48,11 @@ public static class CalculateAverageNaiveClassConsoleWrite
 
     private static NaiveClass CalculateValues(NaiveClass values, double newValue)
     {
-        values.Count++;//increment count
-        if (newValue < values.Min) values.Min = newValue;//track min
-        if (newValue > values.Max) values.Max = newValue;//track max
-        values.Total += newValue;//track total
-        values.Mean = values.Total / values.Count;//keep track of current mean as well
+        values.Count++;
+        if (newValue < values.Min) values.Min = newValue;
+        if (newValue > values.Max) values.Max = newValue;
+        values.Total += newValue;
+        values.Mean = values.Total / values.Count;//keep track of current mean as well. Future implementations will not do this to reduce division operations.
 
         return values;
     }
