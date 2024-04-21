@@ -8,13 +8,11 @@ namespace _1brc_csharp_implementations;
 /// </summary>
 public static class CalculateAverageNaiveStructConcatenation
 {
-    private const string WeatherDataFile = "/data/weather_stations.csv";
-
     public static void Run()
     {
         var filePath = FilePathGetter.GetFilePath();
         
-        var dictionary = new Dictionary<string, NaiveStruct>();// array is length 4. count, min, max, total. mean calculated at end, to avoid unnecessary division operations.
+        var dictionary = new Dictionary<string, NaiveStruct>();
         foreach (var line in File.ReadLines(filePath))
         {
             ProcessLine(line, dictionary);
@@ -53,11 +51,11 @@ public static class CalculateAverageNaiveStructConcatenation
 
     private static NaiveStruct CalculateValues(NaiveStruct values, double newValue)
     {
-        values.Count++;//increment count
-        if (newValue < values.Min) values.Min = newValue;//track min
-        if (newValue > values.Max) values.Max = newValue;//track max
-        values.Total += newValue;//track total
-        values.Mean = values.Total / values.Count;//track mean. excluded from further implementations, is a huge optimization
+        values.Count++;
+        if (newValue < values.Min) values.Min = newValue;
+        if (newValue > values.Max) values.Max = newValue;
+        values.Total += newValue;
+        values.Mean = values.Total / values.Count;//track mean. excluded from further implementations, is good huge optimization.
 
         return values;
     }

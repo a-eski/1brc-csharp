@@ -43,6 +43,8 @@ public class Benchmarks
     public void CalculateAverageStreamReader_12() => _1brc_csharp_implementations.CalculateAverageStreamReader.Run();
     [Benchmark]
     public void CalculateAverageFasterConsole_13() => _1brc_csharp_implementations.CalculateAverageFasterConsole.Run();
+    [Benchmark]
+    public void CalculateAverageStructFasterConsole_14() => _1brc_csharp_implementations.CalculateAverageStructFasterConsole.Run();
 }
 
 /*

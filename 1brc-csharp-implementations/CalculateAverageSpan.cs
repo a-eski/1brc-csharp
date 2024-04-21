@@ -47,9 +47,9 @@ public static class CalculateAverageSpan
             return;
         }
         
-        values[0]++;//increment count
-        if (newValue < values[1]) values[1] = newValue;//track min
-        if (newValue > values[2]) values[2] = newValue;//track max
-        values[3] += newValue;//track total
+        values[0]++;
+        if (newValue < values[1]) values[1] = newValue;
+        if (newValue > values[2]) values[2] = newValue;
+        values[3] += newValue;
     }
 }
