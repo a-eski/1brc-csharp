@@ -12,11 +12,13 @@ stopwatch.Start();
 //CalculateAverageStringBuilder.Run();
 //CalculateAverageSpan.Run();
 //CalculateAverageSortedDictionary.Run();
-//CalculateAverageStruct.Run();
+//CalculateAverageStruct.Run();     //doesn't produce correct results
 //CalculateAverageSpan2.Run();
 //await CalculateAverageAsync.Run();
 //CalculateAverageStreamReader.Run(); 
-CalculateAverageFasterConsole.Run();
+//CalculateAverageFasterConsole.Run();
+//CalculateAverageStructFasterConsole.Run();  //doesn't produce correct results
+CalculateAverageRefDictionary.Run();
 
 stopwatch.Stop();
 Console.WriteLine($"Time elapsed: {stopwatch.ElapsedMilliseconds}ms");

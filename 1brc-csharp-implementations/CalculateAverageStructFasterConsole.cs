@@ -5,7 +5,7 @@ using _1brc_csharp_implementations.Models;
 namespace _1brc_csharp_implementations;
 
 /// <summary>
-/// Iterating from CalculateAverageNaive, continue trying to reduce allocations and duration without splitting work asynchronously and without using multiple threads.
+/// Iterating from CalculateAverageFasterConsole, continue trying to reduce allocations and duration without splitting work asynchronously and without using multiple threads.
 /// </summary>
 public static class CalculateAverageStructFasterConsole
 {
@@ -23,8 +23,8 @@ public static class CalculateAverageStructFasterConsole
 
             if (!dictionary.TryGetValue(weatherStationName, out var values) || values.Count == 0)
             {
-                dictionary.Add(weatherStationName, WeatherValues.GetNew(newValue));
-                return;
+                dictionary.Add(weatherStationName, new WeatherValues(newValue));
+                continue;
             }
             
             values.Apply(newValue);
