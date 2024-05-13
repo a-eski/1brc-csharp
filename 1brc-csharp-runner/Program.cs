@@ -6,6 +6,7 @@ stopwatch.Start();
 
 //CalculateAverageNaiveClassConsoleWrite.Run(); 
 //CalculateAverageNaiveStructConcatenation.Run();
+//CalculateAverageNaiveList.Run();
 //CalculateAverageNaiveStruct.Run();
 //CalculateAverageNaiveClass.Run();
 //CalculateAverageNaive.Run();
@@ -18,7 +19,9 @@ stopwatch.Start();
 //CalculateAverageStreamReader.Run(); 
 //CalculateAverageFasterConsole.Run();
 //CalculateAverageStructFasterConsole.Run();  //doesn't produce correct results
-CalculateAverageRefDictionary.Run();
+//CalculateAverageRefDictionary.Run();
+CalculateAverageStruct2.Run();
+//CalculateAverageMemoryMappedFile.Run();
 
 stopwatch.Stop();
 Console.WriteLine($"Time elapsed: {stopwatch.ElapsedMilliseconds}ms");

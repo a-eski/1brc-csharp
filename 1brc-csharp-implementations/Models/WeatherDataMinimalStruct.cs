@@ -1,6 +1,6 @@
 ﻿namespace _1brc_csharp_implementations.Models;
 
-public struct WeatherData
+public struct WeatherDataMinimalStruct
 {
     public float Min { get; set; }
     public float Max { get; set; }

@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using _1brc_csharp_implementations.Common;
+using _1brc_csharp_implementations.Constants;
 
 namespace _1brc_csharp_implementations;
 
@@ -23,9 +24,9 @@ public static class CalculateAverageStringBuilder
         foreach (var weatherStation in dictionary.OrderBy(x => x.Key))
         {
             sb.Append(weatherStation.Key).Append('=')
-                .Append(weatherStation.Value[1].ToString("##.#")).Append(',')
-                .Append(weatherStation.Value[2].ToString("##.#")).Append(',')
-                .Append((weatherStation.Value[3] / weatherStation.Value[0]).ToString("##.#"));
+                .Append(weatherStation.Value[Indices.Minimum].ToString("##.#")).Append(',')
+                .Append(weatherStation.Value[Indices.Maximum].ToString("##.#")).Append(',')
+                .Append((weatherStation.Value[Indices.Total] / weatherStation.Value[Indices.Count]).ToString("##.#"));
             
             if (++index < dictionary.Count) sb.Append(", ");
         }
@@ -52,9 +53,9 @@ public static class CalculateAverageStringBuilder
 
     private static void CalculateValues(float[] values, float newValue)
     {
-        values[0]++;
-        if (newValue < values[1]) values[1] = newValue;
-        if (newValue > values[2]) values[2] = newValue;
-        values[3] += newValue;
+        values[Indices.Count]++;
+        if (newValue < values[Indices.Minimum]) values[Indices.Minimum] = newValue;
+        if (newValue > values[Indices.Maximum]) values[Indices.Maximum] = newValue;
+        values[Indices.Total] += newValue;
     }
 }

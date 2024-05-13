@@ -13,7 +13,7 @@ public static class CalculateAverageStruct
     {
         var filePath = FilePathGetter.GetFilePath();
         
-        var dictionary = new Dictionary<string, WeatherData>();
+        var dictionary = new Dictionary<string, WeatherDataMinimalStruct>();
         foreach (var line in File.ReadLines(filePath))
         {
             ProcessLine(line, dictionary);
@@ -35,7 +35,7 @@ public static class CalculateAverageStruct
         Console.WriteLine(sb.ToString());
     }
 
-    private static void ProcessLine(string line, Dictionary<string, WeatherData> dictionary)
+    private static void ProcessLine(string line, Dictionary<string, WeatherDataMinimalStruct> dictionary)
     {
         var lineSpan = line.AsSpan();
         var semicolonIndex = lineSpan.IndexOf(';');
@@ -44,7 +44,7 @@ public static class CalculateAverageStruct
 
         if (!dictionary.TryGetValue(weatherStationName, out var values) || values.Count == 0)
         {
-            dictionary.Add(weatherStationName, new WeatherData { Count = 1, Min = newValue, Max = newValue, Total = newValue });
+            dictionary.Add(weatherStationName, new WeatherDataMinimalStruct { Count = 1, Min = newValue, Max = newValue, Total = newValue });
             return;
         }
         
