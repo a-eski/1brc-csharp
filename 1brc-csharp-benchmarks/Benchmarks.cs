@@ -67,4 +67,17 @@ public class Benchmarks
 | CalculateAverageFasterConsole_14   | 108.0 ms |  0.57 ms |  0.54 ms | 108.1 ms |  5800.0000 | 1000.0000 | 800.0000 |  95.63 MB |
 | CalculateAverageRefDictionary_16   | 107.9 ms |  0.73 ms |  0.69 ms | 107.9 ms |  5800.0000 | 1000.0000 | 800.0000 |  95.63 MB |
 | CalculateAverageStruct2_17         | 106.4 ms |  1.08 ms |  1.01 ms | 106.1 ms |  5800.0000 | 1000.0000 | 800.0000 |  95.62 MB |
+
+| Method                             | Mean     | Error   | StdDev  | Gen0       | Gen1      | Gen2     | Allocated |
+|----------------------------------- |---------:|--------:|--------:|-----------:|----------:|---------:|----------:|
+| CalculateAverageNaive_6            | 147.3 ms | 2.92 ms | 2.87 ms | 10000.0000 | 1000.0000 | 750.0000 | 164.21 MB |
+| CalculateAverageStringBuilder_7    | 132.3 ms | 2.03 ms | 1.80 ms | 10250.0000 | 1000.0000 | 750.0000 | 164.89 MB |
+| CalculateAverageSpan_8             | 115.4 ms | 1.16 ms | 1.03 ms |  5800.0000 | 1000.0000 | 800.0000 |  96.22 MB |
+| CalculateAverageSortedDictionary_9 | 494.7 ms | 2.74 ms | 2.29 ms |  5000.0000 | 1000.0000 |        - |   95.7 MB |
+| CalculateAverageSpan2_11           | 110.7 ms | 1.88 ms | 1.75 ms |  5800.0000 | 1000.0000 | 800.0000 |  96.22 MB |
+| CalculateAverageAsync_12           | 184.3 ms | 3.60 ms | 4.80 ms | 10000.0000 | 1000.0000 | 500.0000 | 165.71 MB |
+| CalculateAverageStreamReader_13    | 110.4 ms | 1.16 ms | 1.09 ms |  5800.0000 | 1000.0000 | 800.0000 |  96.22 MB |
+| CalculateAverageFasterConsole_14   | 109.6 ms | 1.07 ms | 0.90 ms |  5800.0000 | 1000.0000 | 800.0000 |  95.63 MB |
+| CalculateAverageRefDictionary_16   | 110.7 ms | 0.88 ms | 0.74 ms |  5800.0000 | 1000.0000 | 800.0000 |  95.63 MB |
+| CalculateAverageStruct2_17         | 106.7 ms | 1.74 ms | 1.54 ms |  5800.0000 | 1000.0000 | 800.0000 |  95.62 MB |
 */
