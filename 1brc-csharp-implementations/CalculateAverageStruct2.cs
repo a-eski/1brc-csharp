@@ -1,35 +1,46 @@
-﻿using System.Text;
+﻿using System.Runtime.InteropServices;
+using System.Text;
 using _1brc_csharp_implementations.Common;
-using _1brc_csharp_implementations.Models;
 
 namespace _1brc_csharp_implementations;
 
 /// <summary>
-/// Iterating from CalculateAverageFasterConsole, continue trying to reduce allocations and duration without splitting work asynchronously and without using multiple threads.
+/// Iterating from CalculateAverageStreamReader, continue trying to reduce allocations and duration without splitting work asynchronously or with multiple threads.
 /// </summary>
-public static class CalculateAverageStructFasterConsole
+public static class CalculateAverageStruct2
 {
     public static void Run()
     {
         var filePath = FilePathGetter.GetPath();
-        
-        var dictionary = new Dictionary<string, WeatherDataStruct>();
-        foreach (var line in File.ReadLines(filePath))
+
+        using var sr = File.OpenText(filePath);
+        var dictionary =
+            new Dictionary<string, WeatherValues>();
+        while (!sr.EndOfStream)
         {
-            var lineSpan = line.AsSpan();
+            var lineSpan = sr.ReadLine()!.AsSpan();
             var semicolonIndex = lineSpan.IndexOf(';');
             var weatherStationName = new string(lineSpan[..semicolonIndex]);
             var newValue = float.Parse(lineSpan[(semicolonIndex + 1)..]);
 
-            if (!dictionary.TryGetValue(weatherStationName, out var values) || values.Count == 0)
+            ref var values =
+                ref CollectionsMarshal.GetValueRefOrAddDefault(dictionary, weatherStationName, out var exists);
+
+            if (!exists)
             {
-                dictionary.Add(weatherStationName, new WeatherDataStruct(newValue));
+                values.Count++;
+                values.Min = newValue;
+                values.Max = newValue;
+                values.Total = newValue;
                 continue;
             }
-            
-            values.Apply(newValue);
+
+            values.Count++;
+            if (newValue < values.Min) values.Min = newValue;
+            if (newValue > values.Max) values.Max = newValue;
+            values.Total += newValue;
         }
-        
+
         var sb = new StringBuilder("{");
         var index = 0;
         foreach (var weatherStation in dictionary.OrderBy(x => x.Key))
@@ -41,11 +52,20 @@ public static class CalculateAverageStructFasterConsole
 
             if (++index < dictionary.Count) sb.Append(", ");
         }
+
         sb.Append('}');
 
-        var result = (ReadOnlySpan<byte>)Encoding.UTF8.GetBytes(sb.ToString()); 
+        var result = (ReadOnlySpan<byte>)Encoding.UTF8.GetBytes(sb.ToString());
         Console.OutputEncoding = Encoding.UTF8;
         using var standardOutput = Console.OpenStandardOutput();
         standardOutput.Write(result);
     }
+}
+
+public record struct WeatherValues
+{
+    public float Min { get; set; }
+    public float Max { get; set; }
+    public float Total { get; set; }
+    public int Count { get; set; }
 }

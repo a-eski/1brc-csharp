@@ -1,6 +1,7 @@
 ﻿using System.Runtime.InteropServices;
 using System.Text;
 using _1brc_csharp_implementations.Common;
+using _1brc_csharp_implementations.Constants;
 using _1brc_csharp_implementations.Models;
 
 namespace _1brc_csharp_implementations;
@@ -31,10 +32,10 @@ public static class CalculateAverageRefDictionary
                 continue;  
             }
 
-            values![0]++;
-            if (newValue < values[1]) values[1] = newValue;
-            if (newValue > values[2]) values[2] = newValue;
-            values[3] += newValue;
+            values[Indices.Count]++;
+            if (newValue < values[Indices.Minimum]) values[Indices.Minimum] = newValue;
+            if (newValue > values[Indices.Maximum]) values[Indices.Maximum] = newValue;
+            values[Indices.Total] += newValue;
         }
 
         var sb = new StringBuilder("{");
@@ -42,9 +43,9 @@ public static class CalculateAverageRefDictionary
         foreach (var weatherStation in dictionary.OrderBy(x => x.Key))
         {
             sb.Append(weatherStation.Key).Append('=')
-                .Append(Math.Round(weatherStation.Value[1], 1, MidpointRounding.ToZero)).Append(',')
-                .Append(Math.Round(weatherStation.Value[2], 1, MidpointRounding.ToZero)).Append(',')
-                .Append(Math.Round(weatherStation.Value[3] / weatherStation.Value[0], 1, MidpointRounding.ToZero));
+                .Append(Math.Round(weatherStation.Value[Indices.Minimum], 1, MidpointRounding.ToZero)).Append(',')
+                .Append(Math.Round(weatherStation.Value[Indices.Maximum], 1, MidpointRounding.ToZero)).Append(',')
+                .Append(Math.Round(weatherStation.Value[Indices.Total] / weatherStation.Value[Indices.Count], 1, MidpointRounding.ToZero));
 
             if (++index < dictionary.Count) sb.Append(", ");
         }

@@ -1,8 +1,8 @@
 ﻿namespace _1brc_csharp_implementations.Models;
 
-public struct WeatherValues
+public struct WeatherDataStruct
 {
-    public WeatherValues(float initialValue)
+    public WeatherDataStruct(float initialValue)
     {
         Min = initialValue;
         Max = initialValue;

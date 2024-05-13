@@ -1,11 +1,12 @@
 ﻿using System.Text;
 using _1brc_csharp_implementations.Common;
+using _1brc_csharp_implementations.Constants;
 
 namespace _1brc_csharp_implementations;
 
 /// <summary>
 /// Initial implementation. Most experienced developers probably end up somewhere like here for first iteration (i.e. just try to do it fast synchronously).
-/// CalculateAveratgeNaiveStruct_3 is a very similar approach.
+/// CalculateAverageNaiveStruct is a very similar approach.
 /// </summary>
 public static class CalculateAverageNaive
 {
@@ -23,7 +24,7 @@ public static class CalculateAverageNaive
         var index = 0;
         foreach (var weatherStation in dictionary.OrderBy(x => x.Key))
         {
-            sb.Append($"{weatherStation.Key}={weatherStation.Value[1]:##.#},{weatherStation.Value[2]:##.#},{(weatherStation.Value[3] / weatherStation.Value[0]):##.#}");
+            sb.Append($"{weatherStation.Key}={weatherStation.Value[Indices.Minimum]:##.#},{weatherStation.Value[Indices.Maximum]:##.#},{(weatherStation.Value[Indices.Total] / weatherStation.Value[Indices.Count]):##.#}");
             if (index++ < dictionary.Count - 1) sb.Append(", ");
         }
         sb.Append('}');
@@ -50,10 +51,10 @@ public static class CalculateAverageNaive
 
     private static double[] CalculateValues(double[] values, double newValue)
     {
-        values[0]++;
-        if (newValue < values[1]) values[1] = newValue;
-        if (newValue > values[2]) values[2] = newValue;
-        values[3] += newValue;
+        values[Indices.Count]++;
+        if (newValue < values[Indices.Minimum]) values[Indices.Minimum] = newValue;
+        if (newValue > values[Indices.Maximum]) values[Indices.Maximum] = newValue;
+        values[Indices.Total] += newValue;
 
         return values;
     }
