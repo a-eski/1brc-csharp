@@ -1,7 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Jobs;
-using BenchmarkDotNet.Diagnostics.Windows.Configs;
 
 namespace _1brc_csharp_benchmarks;
 
@@ -27,30 +26,36 @@ public class Benchmarks
     // public void CalculateAverageNaiveClass_4() => _1brc_csharp_implementations.CalculateAverageNaiveStruct.Run();
     // [Benchmark]
     // public void CalculateAverageNaiveStruct_5() => _1brc_csharp_implementations.CalculateAverageNaiveStruct.Run();
-    [Benchmark]
-    public void CalculateAverageNaive_6() => _1brc_csharp_implementations.CalculateAverageNaive.Run();
-    [Benchmark]
-    public void CalculateAverageStringBuilder_7() => _1brc_csharp_implementations.CalculateAverageStringBuilder.Run();
-    [Benchmark]
-    public void CalculateAverageSpan_8() => _1brc_csharp_implementations.CalculateAverageSpan.Run();
-    [Benchmark]
-    public void CalculateAverageSortedDictionary_9() => _1brc_csharp_implementations.CalculateAverageSortedDictionary.Run();
+    // [Benchmark]
+    // public void CalculateAverageNaive_6() => _1brc_csharp_implementations.CalculateAverageNaive.Run();
+    // [Benchmark]
+    // public void CalculateAverageStringBuilder_7() => _1brc_csharp_implementations.CalculateAverageStringBuilder.Run();
+    // [Benchmark]
+    // public void CalculateAverageSpan_8() => _1brc_csharp_implementations.CalculateAverageSpan.Run();
+    // [Benchmark]
+    // public void CalculateAverageSortedDictionary_9() => _1brc_csharp_implementations.CalculateAverageSortedDictionary.Run();
     // [Benchmark]  //doesn't calculate values correctly
     // public void CalculateAverageStruct_10() => _1brc_csharp_implementations.CalculateAverageStruct.Run();
-    [Benchmark]
-    public void CalculateAverageSpan2_11() => _1brc_csharp_implementations.CalculateAverageSpan2.Run();
-    [Benchmark]
-    public async Task CalculateAverageAsync_12() => await _1brc_csharp_implementations.CalculateAverageAsync.Run();
-    [Benchmark]
-    public void CalculateAverageStreamReader_13() => _1brc_csharp_implementations.CalculateAverageStreamReader.Run();
-    [Benchmark]
-    public void CalculateAverageFasterConsole_14() => _1brc_csharp_implementations.CalculateAverageFasterConsole.Run();
+    // [Benchmark]
+    // public void CalculateAverageSpan2_11() => _1brc_csharp_implementations.CalculateAverageSpan2.Run();
+    // [Benchmark]
+    // public async Task CalculateAverageAsync_12() => await _1brc_csharp_implementations.CalculateAverageAsync.Run();
+    // [Benchmark]
+    // public void CalculateAverageStreamReader_13() => _1brc_csharp_implementations.CalculateAverageStreamReader.Run();
+    // [Benchmark]
+    // public void CalculateAverageFasterConsole_14() => _1brc_csharp_implementations.CalculateAverageFasterConsole.Run();
     // [Benchmark]  //doesn't calculate values correctly
     // public void CalculateAverageStructFasterConsole_15() => _1brc_csharp_implementations.CalculateAverageStructFasterConsole.Run();
+    // [Benchmark]
+    // public void CalculateAverageRefDictionary_16() => _1brc_csharp_implementations.CalculateAverageRefDictionary.Run(); 
+    // [Benchmark]
+    // public void CalculateAverageStruct2_17() => _1brc_csharp_implementations.CalculateAverageStruct2.Run(); 
+    /*[Benchmark] // has UTF-8 issues, doesn't produce correct result
+    public void CalculateAverageMemoryMappedFile_18() => _1brc_csharp_implementations.CalculateAverageMemoryMappedFile.Run();*/
     [Benchmark]
-    public void CalculateAverageRefDictionary_16() => _1brc_csharp_implementations.CalculateAverageRefDictionary.Run(); 
+    public void CalculateAverageSb_19() => _1brc_csharp_implementations.CalculateAverageSb.Run();
     [Benchmark]
-    public void CalculateAverageStruct2_17() => _1brc_csharp_implementations.CalculateAverageStruct2.Run(); 
+    public void CalculateAverageSb2_20() => _1brc_csharp_implementations.CalculateAverageSb2.Run();
 }
 
 /*
@@ -80,4 +85,11 @@ public class Benchmarks
 | CalculateAverageFasterConsole_14   | 109.6 ms | 1.07 ms | 0.90 ms |  5800.0000 | 1000.0000 | 800.0000 |  95.63 MB |
 | CalculateAverageRefDictionary_16   | 110.7 ms | 0.88 ms | 0.74 ms |  5800.0000 | 1000.0000 | 800.0000 |  95.63 MB |
 | CalculateAverageStruct2_17         | 106.7 ms | 1.74 ms | 1.54 ms |  5800.0000 | 1000.0000 | 800.0000 |  95.62 MB |
+
+| Method                           | Mean     | Error   | StdDev  | Gen0      | Gen1      | Gen2     | Allocated |
+|--------------------------------- |---------:|--------:|--------:|----------:|----------:|---------:|----------:|
+| CalculateAverageFasterConsole_14 | 112.5 ms | 1.14 ms | 1.06 ms | 5800.0000 | 1000.0000 | 800.0000 |  95.63 MB |
+| CalculateAverageRefDictionary_16 | 110.3 ms | 1.07 ms | 1.00 ms | 5800.0000 | 1000.0000 | 800.0000 |  95.63 MB |
+| CalculateAverageStruct2_17       | 107.3 ms | 0.63 ms | 0.53 ms | 5800.0000 | 1000.0000 | 800.0000 |  95.62 MB |
+| CalculateAverageSb_18            | 106.7 ms | 0.73 ms | 0.65 ms | 5800.0000 | 1000.0000 | 800.0000 |  95.62 MB |
 */

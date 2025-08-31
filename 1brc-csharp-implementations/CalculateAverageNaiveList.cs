@@ -9,8 +9,8 @@ namespace _1brc_csharp_implementations;
 /// </summary>
 public class WeatherInfo
 {
-    public string StationName { get; set; }
-    public double[] Data { get; set; } // array is length 3. count, min, max, total. mean calculated at end, to avoid unnecessary division operations.
+    public required string StationName { get; init; }
+    public required double[] Data { get; init; } // array is length 3. count, min, max, total. mean calculated at end, to avoid unnecessary division operations.
 }
 
 public static class CalculateAverageNaiveList

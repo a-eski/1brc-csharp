@@ -1,4 +1,4 @@
-﻿using System.Runtime.InteropServices;
+using System.Runtime.InteropServices;
 using System.Text;
 using _1brc_csharp_implementations.Common;
 using _1brc_csharp_implementations.Models;
@@ -6,9 +6,9 @@ using _1brc_csharp_implementations.Models;
 namespace _1brc_csharp_implementations;
 
 /// <summary>
-/// Iterating from CalculateAverageStreamReader, continue trying to reduce allocations and duration without splitting work asynchronously or with multiple threads.
+/// Iterating from CalculateAverageStruct2, continue trying to reduce allocations and duration without splitting work asynchronously or with multiple threads.
 /// </summary>
-public static class CalculateAverageStruct2
+public static class CalculateAverageSb
 {
     public static void Run()
     {
@@ -41,17 +41,18 @@ public static class CalculateAverageStruct2
         }
 
         var sb = new StringBuilder("{");
-        var index = 0;
         foreach (var weatherStation in dictionary.OrderBy(x => x.Key))
         {
+            var min = Math.Truncate(weatherStation.Value.Min * 1E1) / 1E1;
+            var max = Math.Truncate(weatherStation.Value.Max * 1E1) / 1E1;
+            var total = Math.Truncate(weatherStation.Value.Total / weatherStation.Value.Count * 1E1) / 1E1;
             sb.Append(weatherStation.Key).Append('=')
-                .Append(Math.Round(weatherStation.Value.Min, 1, MidpointRounding.ToZero)).Append(',')
-                .Append(Math.Round(weatherStation.Value.Max, 1, MidpointRounding.ToZero)).Append(',')
-                .Append(Math.Round(weatherStation.Value.Total / weatherStation.Value.Count, 1, MidpointRounding.ToZero));
-
-            if (++index < dictionary.Count) sb.Append(", ");
+                            .Append(min).Append(',')
+                            .Append(max).Append(',')
+                            .Append(total).Append(", ");
         }
         sb.Append('}');
+        sb.Remove(sb.Length - 3, 2);
 
         var result = (ReadOnlySpan<byte>)Encoding.UTF8.GetBytes(sb.ToString());
         Console.OutputEncoding = Encoding.UTF8;

@@ -4,7 +4,7 @@ using _1brc_csharp_implementations;
 var stopwatch = new Stopwatch();
 stopwatch.Start();
 
-//CalculateAverageNaiveClassConsoleWrite.Run(); 
+//CalculateAverageNaiveClassConsoleWrite.Run();
 //CalculateAverageNaiveStructConcatenation.Run();
 //CalculateAverageNaiveList.Run();
 //CalculateAverageNaiveStruct.Run();
@@ -16,12 +16,14 @@ stopwatch.Start();
 //CalculateAverageStruct.Run();     //doesn't produce correct results
 //CalculateAverageSpan2.Run();
 //await CalculateAverageAsync.Run();
-//CalculateAverageStreamReader.Run(); 
+//CalculateAverageStreamReader.Run();
 //CalculateAverageFasterConsole.Run();
 //CalculateAverageStructFasterConsole.Run();  //doesn't produce correct results
 //CalculateAverageRefDictionary.Run();
-CalculateAverageStruct2.Run();
+//CalculateAverageStruct2.Run();
 //CalculateAverageMemoryMappedFile.Run();
+//CalculateAverageSb.Run();
+CalculateAverageSb2.Run();
 
 stopwatch.Stop();
 Console.WriteLine($"Time elapsed: {stopwatch.ElapsedMilliseconds}ms");

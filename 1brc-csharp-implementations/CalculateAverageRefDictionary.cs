@@ -2,7 +2,6 @@
 using System.Text;
 using _1brc_csharp_implementations.Common;
 using _1brc_csharp_implementations.Constants;
-using _1brc_csharp_implementations.Models;
 
 namespace _1brc_csharp_implementations;
 

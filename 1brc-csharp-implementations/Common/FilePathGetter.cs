@@ -1,4 +1,6 @@
-﻿namespace _1brc_csharp_implementations.Common;
+﻿using System.Runtime.CompilerServices;
+
+namespace _1brc_csharp_implementations.Common;
 
 public static class FilePathGetter
 {
@@ -14,5 +16,6 @@ public static class FilePathGetter
     }
 
     //Simplified
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static string GetPath() => $"{Environment.CurrentDirectory}/../../../..{WeatherDataFile}";
 }
